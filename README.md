@@ -1,17 +1,25 @@
 # Table of Contents
 1. [Introduction](README.md#introduction)
-2. [Environment](README.md#environment)
-3. [Main files](README.md#main-files)
-4. [How to run](README.md#how-to-run)
-5. [Repo directory structure](README.md#repo-directory-structure)
+2. [Identifying Repeat Donors](README.md#identifying-repeat-donors)
+3. [Environment](README.md#environment)
+4. [Main files](README.md#main-files)
+5. [How to run](README.md#how-to-run)
+6. [Repo directory structure](README.md#repo-directory-structure)
 
 
 # Introduction
-This repo contains for Coding challenge of Insight's Data Engineering fellowship program. Please refer to https://github.com/InsightDataScience/donation-analytics for details.
+This repo contains a solution for Insight's Data Engineering Coding Challenge. Please refer to https://github.com/InsightDataScience/donation-analytics for details.
+
+# Identifying Repeat Donors
+Below are rules implented in the code to idnetify repeated donors:
+
+    1. If a donor had previously contributed to any recipient listed in the itcont.txt file in any prior calendar year, that donor is considered a repeat donor. 
+    2. Two donations made on the same day does not quilaify a person a repeat donor.
 
 # Environment
     1. Python 2.7.14
     2. Python modules needed: bisect, math, datetime, and sys
+    3. Programs have been tested both in Ubuntun (16.04 64-bit) and Windows 10 (64-bit).
 
 # Main files
     1. main.py: process political contribution data and generate an output file
