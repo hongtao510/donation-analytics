@@ -108,11 +108,3 @@ if __name__ == "__main__":
         main(sys.argv)
     except ValueError as err:
         print err
-    # fn_itcont = "D:/Dropbox/insight_data_challenge/2018/insight_testsuite/tests/test_th2/input/itcont.txt"
-    # fn_pctl = "D:/Dropbox/insight_data_challenge/2018/insight_testsuite/tests/test_th2/input/percentile.txt"
-    # fn_output = "D:/Dropbox/insight_data_challenge/2018/insight_testsuite/tests/test_th2/output/repeat_donors_TH.txt"
-
-    # parse_file(fn_itcont, fn_pctl, fn_output)
-
-
-# handle input output file error

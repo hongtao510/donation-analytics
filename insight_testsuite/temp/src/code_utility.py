@@ -1,7 +1,7 @@
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 '''
-utility functions for find_political_donors.py
+utility functions for main.py
 '''
 from datetime import datetime
 from math import ceil
@@ -49,6 +49,7 @@ def valid_Date(date_str):
         except:
             return False
 
+
 def valid_AMT(amt_str):
     '''
         Function to check if TRANSACTION_AMT is valid, 
@@ -62,7 +63,6 @@ def valid_AMT(amt_str):
         return False
 
 
-
 def extract_row(row_record):
     '''
         Function to parse political donors row record
@@ -73,8 +73,7 @@ def extract_row(row_record):
             a binary value (to indicate whether or not to use 
                 this record 0-keep, 1-drop
 
-        if record is invalid, 
-            will return an empty dictionary and ignore_record with 1
+        if record is invalid, ignore_record with 1
     '''
     rslt = {}                   # initialize a dictionary to hold parsed fields
     ignore_record = 0           # 0-keep, 1-drop;
@@ -145,9 +144,9 @@ def calculate_metric(x, pctl):
     # Returns
         three tuples
     """
-
     n = int(ceil(pctl / 100.0 * len(x)))
     return x[n - 1], sum(x), len(x)
+
 
 def dateCompare(exist_DT, current_DT):
     '''
@@ -169,7 +168,6 @@ def format_output(record_key, record_value, pctl):
     # Returns
         strings of output
     """
-
     record_list_t = record_key.split(', ')
     CMTE_ID_t = record_list_t[0]
     ZIP_CODE_t = record_list_t[1]
@@ -184,5 +182,4 @@ def format_output(record_key, record_value, pctl):
     output_str = CMTE_ID_t + "|" + ZIP_CODE_t + "|" + \
         TRANSACTION_YEAR_t + "|" + perctil_donation_t + \
         "|" + sum_donation_t + "|" + n_donation_t + "\n"
-
     return output_str

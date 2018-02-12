@@ -8,17 +8,7 @@ with recipient ID,  zipcode, year, percentile of donations, total amount of dona
 and total number of contributions (e.g., C00003251|45503|2018|4|1|4)
 
 How to run this scripts:
-    $ python ./path_to/main.py zip \
-         ./path_to/itcont.txt ./path_to/medianvals_by_zip.txt
-    2. run "date" mode
-       $ python ./path_to/find_political_donors.py date \
-         ./path_to/itcont.txt ./path_to/medianvals_by_date.txt
-    3. run "all" mode
-       $ python ./path_to/find_political_donors.py all ./input/itcont.txt \
-         ./output/medianvals_by_zip.txt ./output/medianvals_by_date.txt
-
-Dependency:
- 
+    $ python ./src/main.py ./input/itcont.txt ./input/percentile.txt ./output/repeat_donors.txt
 '''
 
 from code_utility import *
@@ -70,7 +60,7 @@ def parse_file(fn_itcont, fn_pctl, fname_output):
                     parsed_line['DONOR_ID'] = parsed_line['NAME'] + ', ' + parsed_line['ZIP_CODE']
                     # a unique ID for recipients
                     parsed_line['RECIPIENT_ID'] = parsed_line['CMTE_ID'] + ", " + parsed_line['ZIP_CODE'] + ', ' + parsed_line['TRANSACTION_YEAR']
-                    print parsed_line['CMTE_ID'], parsed_line['NAME'], parsed_line['ZIP_CODE'], parsed_line['TRANSACTION_DT'], parsed_line['TRANSACTION_AMT']
+                    # print parsed_line['CMTE_ID'], parsed_line['NAME'], parsed_line['ZIP_CODE'], parsed_line['TRANSACTION_DT'], parsed_line['TRANSACTION_AMT']
 
                     # check each streamed record and decide if this donor is a repeated one.
                     #   1. if not, just add DONOR_ID to repeat_donors for further use (identify repeat donors)
@@ -107,7 +97,6 @@ def main(argv):
         fn_itcont = argv[1]
         fn_pctl = argv[2]
         fn_output = argv[3]
-
         parsed_file = parse_file(fn_itcont, fn_pctl, fn_output)
         print fn_output + " is generated!"
     else:
@@ -115,15 +104,7 @@ def main(argv):
 
 
 if __name__ == "__main__":
-    # try:
-    #     main(sys.argv)
-    # except ValueError as err:
-    #     print err
-    fn_itcont = "D:/Dropbox/insight_data_challenge/2018/insight_testsuite/tests/test_6/input/itcont.txt"
-    fn_pctl = "D:/Dropbox/insight_data_challenge/2018/insight_testsuite/tests/test_6/input/percentile.txt"
-    fn_output = "D:/Dropbox/insight_data_challenge/2018/insight_testsuite/tests/test_6/output/repeat_donors_TH.txt"
-
-    parse_file(fn_itcont, fn_pctl, fn_output)
-
-
-# handle input output file error
+    try:
+        main(sys.argv)
+    except ValueError as err:
+        print err
