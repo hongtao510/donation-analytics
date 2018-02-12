@@ -1,8 +1,8 @@
 # Table of Contents
 1. [Introduction](README.md#introduction)
 2. [Environment](README.md#environment)
-3. [How to run](README.md#how-to-run)
-4. [Main files](README.md#main-files)
+3. [Main files](README.md#main-files)
+4. [How to run](README.md#how-to-run)
 5. [Repo directory structure](README.md#repo-directory-structure)
 
 
@@ -22,7 +22,7 @@ This repo contains for Coding challenge of Insight's Data Engineering fellowship
 
 # How to run
   Once this repository is downloaded:
-  
+
     1. run `run.sh` for the default example or 
     2. type the following command in terminal:
     `$ python ./src/main.py ./input/itcont.txt ./input/percentile.txt ./output/repeat_donors.txt`
